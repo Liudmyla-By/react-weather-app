@@ -20,7 +20,7 @@ function App() {
         </div>
         <footer>
           This project was coded by Liudmyla Bykadorova and is
-          <a href=" " target="_blank" rel="noreferrer"> open-sourced on GitHub</a>
+          <a href="https://github.com/Liudmyla-By/react-weather-app" target="_blank" rel="noreferrer"> open-sourced on GitHub</a>
         </footer>
       </div>
     </div>
