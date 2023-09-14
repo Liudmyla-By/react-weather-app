@@ -9,7 +9,7 @@ function App() {
       <div class="container">
         <div class="weather-app">
           <Search />
-          <h1> Lisbon</h1>
+          <h1>Paris</h1>
           <ul>
             <li>
               Sunday 12:00
