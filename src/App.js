@@ -1,23 +1,28 @@
-import logo from './logo.svg';
+import React from "react";
+import Search from "./Search.js"
+import Weather from "./Weather.js"
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div class="container">
+        <div class="weather-app">
+          <Search />
+          <h1> Lisbon</h1>
+          <ul>
+            <li>
+              Sunday 12:00
+            </li>
+            <li>Cloudy</li>
+          </ul>
+          <Weather humidity="70" wind="5" mainTemp="22" />
+        </div>
+        <footer>
+          This project was coded by Liudmyla Bykadorova and is
+          <a href=" " target="_blank" rel="noreferrer"> open-sourced on GitHub</a>
+        </footer>
+      </div>
     </div>
   );
 }
