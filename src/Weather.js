@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Weather.css";
+import FormattedDate from "./FormattedDate";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -8,6 +9,7 @@ export default function Weather(props) {
     setWeatherData({
       city: responce.data.city,
       ready: true,
+      date: new Date(responce.data.time * 1000),
       temperature: Math.round(responce.data.temperature.current),
       wind: Math.round(responce.data.wind.speed),
       humidity: responce.data.temperature.humidity,
@@ -45,7 +47,7 @@ export default function Weather(props) {
         <h1>{weatherData.city}</h1>
         <ul>
           <li>
-            Sunday 12:00
+            <FormattedDate date={weatherData.date} />
           </li>
           <li> {weatherData.description} </li>
         </ul>
@@ -76,7 +78,7 @@ export default function Weather(props) {
   }
   else {
     const apiKey = "6023o651f6tfcb9ffa0c896e14d7ed9c";
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${props.city}&key=${apiKey}&units=metric`;
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=Lisbon&key=${apiKey}&units=metric`;
     axios.get(apiUrl).then(showWeather);
     return "Searching...";
   }
