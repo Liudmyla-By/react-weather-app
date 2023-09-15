@@ -8,17 +8,6 @@
   margin: 8px;
 }
 
-.App {
-  border: 1px solid #b9cbe2;
-  padding: 30px;
-  margin: 20px auto;
-  border-radius: 10px;
-  max-width: 550px;
-  background-image: url("https://openweather.co.uk/storage/app/media/ow_clouds_2.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  filter: drop-shadow(5px 5px 5px #837a8b);
-}
 
 
 @media (max-width: 576px) {
