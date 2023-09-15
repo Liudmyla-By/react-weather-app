@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Weather.css";
-import FormattedDate from "./FormattedDate";
-
+import WeatherInfo from "./WeatherInfo";
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
+  const [city, setCity] = useState(props.defaultCity);
   function showWeather(responce) {
     setWeatherData({
       city: responce.data.city,
@@ -13,14 +13,39 @@ export default function Weather(props) {
       temperature: Math.round(responce.data.temperature.current),
       wind: Math.round(responce.data.wind.speed),
       humidity: responce.data.temperature.humidity,
-      discription: responce.data.condition.description
+      discription: responce.data.condition.description,
     });
   }
 
+  function handleSubmit(event) {
+    event.preventDefault();
+    Search();
+  }
+
+  function handleCityChange(event) {
+    setCity(event.target.value);
+  }
+
+  function Search() {
+    const apiKey = "6023o651f6tfcb9ffa0c896e14d7ed9c";
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(showWeather);
+  }
+
+  function geolocation(event) {
+    event.preventDefault();
+    navigator.geolocation.getCurrentPosition(accessPosition);
+  }
+
+  function accessPosition(position) {
+    let apiKey = "6023o651f6tfcb9ffa0c896e14d7ed9c";
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?lat=${position.coords.latitude}&lon=${position.coords.longitude}&key=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(showWeather);
+  }
   if (weatherData.ready) {
     return (
       <div className="Weather">
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="row">
             <div className="col-8">
               <input
@@ -29,6 +54,7 @@ export default function Weather(props) {
                 placeholder="Enter a city..."
                 id="search-input"
                 autoComplete="off"
+                onChange={handleCityChange}
               />
             </div>
             <div className="col-2">
@@ -40,46 +66,17 @@ export default function Weather(props) {
                 className="btn d-none d-md-block btn-light"
                 value="Current"
                 id="button"
+                onClick={geolocation}
               />
             </div>
           </div>
         </form>
-        <h1>{weatherData.city}</h1>
-        <ul>
-          <li>
-            <FormattedDate date={weatherData.date} />
-          </li>
-          <li> {weatherData.description} </li>
-        </ul>
-        <div className="row">
-          <div className="col-6">
-            <div className="flexbox weather-temperature">
-              <img
-                className="main-icon img-fluid"
-                src="https://freesvg.org/img/weather-overcast.png"
-                alt="weather-icon"
-                id="icon"
-              />
-              <strong className="temperature" id="temperature">
-                {weatherData.temperature}
-              </strong>
-              <span className="unit">°C</span>
-            </div>
-          </div>
-          <div className="col-6 pe-0">
-            <ul className="humidity-wind">
-              <li>Humidity: {weatherData.humidity} %</li>
-              <li>Wind: {weatherData.wind} m/s</li>
-            </ul>
-          </div>
-        </div>
+        <WeatherInfo data={weatherData} />
       </div>
     );
   }
   else {
-    const apiKey = "6023o651f6tfcb9ffa0c896e14d7ed9c";
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=Lisbon&key=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(showWeather);
+    Search();
     return "Searching...";
   }
 }
