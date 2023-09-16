@@ -18,9 +18,8 @@ export default function WeatherInfo(props) {
                     <div className="flexbox weather-temperature">
                         <img
                             className="main-icon img-fluid"
-                            src="https://freesvg.org/img/weather-overcast.png"
-                            alt="weather-icon"
-                            id="icon"
+                            src={props.data.iconUrl}
+                            alt={props.data.description}
                         />
                         <strong className="temperature">
                             {props.data.temperature}

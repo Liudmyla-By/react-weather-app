@@ -14,6 +14,7 @@ export default function Weather(props) {
       wind: Math.round(responce.data.wind.speed),
       humidity: responce.data.temperature.humidity,
       discription: responce.data.condition.description,
+      iconUrl: `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${responce.data.condition.icon}.png`,
     });
   }
 
