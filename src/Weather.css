@@ -1,68 +1,85 @@
-h1 {
-    color: black;
-    font-size: 55px;
-    font-weight: 600;
-    line-height: 28px;
-    margin-top: 20px;
-}
-
-ul {
-    margin: 0 0 10px;
-    padding: 0;
-}
-
-li {
-    color: rgb(80, 76, 76);
-    font-size: 22px;
-    font-weight: 400;
-    height: 19px;
-    line-height: 1;
-    list-style: none;
-}
-
-form {
-    margin-bottom: 30px;
-    opacity: 0.7;
-}
-
-.weather-temperature {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.main-icon {
-    width: 140px;
-}
-
-.temperature {
-    color: rgb(80, 76, 76);
-    font-size: 65px;
-    font-weight: 300;
-    line-height: 1;
-}
-
-.unit {
-    position: relative;
-    top: -25px;
-    left: -10px;
-    font-size: 30px;
-    font-weight: 400;
-}
-
-.humidity-wind {
-    margin-top: 37px;
-    margin-left: 12px;
-}
-
 .Weather {
     border: 1px solid #b9cbe2;
     padding: 30px;
     margin: 20px auto;
     border-radius: 10px;
     max-width: 550px;
-    background-image: url("https://openweather.co.uk/storage/app/media/ow_clouds_2.jpg");
+    background: #d5b5cd;
+    ;
     background-size: cover;
     background-repeat: no-repeat;
     filter: drop-shadow(5px 5px 5px #837a8b);
+}
+
+.Weather form {
+    margin-bottom: 30px;
+    opacity: 0.6;
+}
+
+.Weather h1 {
+    font-size: 45px;
+    margin: 20px 0 0 0;
+    line-height: 30px;
+}
+
+.Weather ul {
+    margin: 0;
+    padding: 0;
+}
+
+.Weather li {
+    list-style: none;
+    font-size: 25px;
+}
+
+.Weather .temperature {
+    position: relative;
+    margin-left: -10px;
+    font-size: 65px;
+    font-weight: 300;
+
+}
+
+.Weather canvas {
+    margin-top: 20px;
+    margin-right: 20px;
+    max-width: 64px;
+    margin-left: 20px;
+}
+
+.Weather .unit {
+    position: relative;
+    top: -35px;
+    font-weight: 300;
+
+}
+
+.Weather .text-capitalize {
+    font-size: 20px;
+    line-height: 35px;
+    margin-left: 2px;
+
+}
+
+
+.Weather .condition {
+    margin-top: 20px;
+    margin-left: 80px;
+}
+
+.Weather .humidity {
+    font-size: 18px;
+}
+
+.Weather .wind {
+    font-size: 18px;
+}
+
+.Weather .date {
+    margin-top: 10px;
+}
+
+.Weather .phrase {
+    border-radius: 10px;
+
 }

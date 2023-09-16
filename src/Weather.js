@@ -74,6 +74,8 @@ export default function Weather(props) {
           </div>
         </form>
         <WeatherInfo data={weatherData} />
+        <img src="/images/img.png" alt="Weather phrase" className="img-fluid max-width: 100% phrase" />
+
       </div>
     );
   }
