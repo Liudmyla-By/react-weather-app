@@ -13,9 +13,10 @@ export default function Weather(props) {
       temperature: Math.round(responce.data.temperature.current),
       wind: Math.round(responce.data.wind.speed),
       humidity: responce.data.temperature.humidity,
-      discription: responce.data.condition.description,
-      iconUrl: `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${responce.data.condition.icon}.png`,
+      description: responce.data.condition.description,
+      icon: responce.data.condition.icon,
     });
+    console.log(responce.data.condition.description)
   }
 
   function handleSubmit(event) {
